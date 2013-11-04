@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+      body {
+        font-family:arial,sans-serif;
+        font-size:14px;
+        color:#333;
+        background-color:#bbb;
+        margin:0;
+        padding:0;
+      }
+      #canvas {
+        background-color:#fff;
+        width:400px;
+        margin-top:10px;
+        margin-left:20px;
+      }
+      .coordinates {
+        display:block;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="400" height="400">
+
+    </canvas>
+    <span class="coordinates coordinates_x"></span>
+    <span class="coordinates coordinates_y"></span>
+    
+  </body>
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      var canvas = $('#canvas');
+          canvas_offset = canvas.offset();
+        offset_element_x = canvas_offset.left;
+        offset_element_y = canvas_offset.top;
+        console.log(offset_element_x);
+        console.log(offset_element_y);
+      canvas.on('mousemove',function(e){
+        console.log(offset_element_x)
+        e.preventDefault();
+        $('.coordinates_x').text(e.pageX - offset_element_x);
+        $('.coordinates_y').text(e.pageY - offset_element_y);
+      });
+    });
+  </script>
+</html>       
